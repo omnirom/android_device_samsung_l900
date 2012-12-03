@@ -25,7 +25,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
 TARGET_KERNEL_CONFIG := cyanogenmod_l900_defconfig
 
 # assert
-TARGET_OTA_ASSERT_DEVICE := t03g,l900,SPH-L900
+TARGET_OTA_ASSERT_DEVICE := t0ltespr,l900,SPH-L900
 
 # inherit from the proprietary version
 -include vendor/samsung/l900/BoardConfigVendor.mk
