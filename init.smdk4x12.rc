@@ -434,11 +434,6 @@ service icd /system/bin/icd
     group system log
     onrestart exec icd_check
 
-service cpboot-daemon /sbin/cbd -d -p 10
-    class main
-    user root
-    group radio cache inet misc audio sdcard_rw log
-
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin \
