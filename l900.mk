@@ -33,9 +33,14 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.smdk4x12:root/fstab.smdk4x12 \
     $(LOCAL_PATH)/init.smdk4x12.rc:root/init.smdk4x12.rc \
-	$(LOCAL_PATH)/init.smdk4x12.usb.rc:root/init.smdk4x12.usb.rc \
+    $(LOCAL_PATH)/init.smdk4x12.usb.rc:root/init.smdk4x12.usb.rc \
     $(LOCAL_PATH)/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
     $(LOCAL_PATH)/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc
+	
+# Prebuilt Modules
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/exfat_core.ko:root/lib/modules/exfat_core.ko \
+    $(LOCAL_PATH)/prebuilt/exfat_fs.ko:root/lib/modules/exfat_fs.ko
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -43,17 +48,15 @@ PRODUCT_COPY_FILES += \
 
 # Gps
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
+    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
 
 # Camera FW
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/80cfw:system/etc/init.d/80cfw
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/80cfw:system/etc/init.d/80cfw
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
     GalaxyNote2Settings \
-    libsecril-client \
-    libsecril-client-sap \
     SamsungServiceMode
 
 # NFC
@@ -80,7 +83,8 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+    Stk
 
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
