@@ -43,6 +43,8 @@ on fs
     mount_all /fstab.smdk4x12
 
     setprop ro.crypto.fuse_sdcard true
+    
+    mount ext4 /dev/block/mmcblk0p11 /tombstones rw wait noatime nosuid nodev journal_async_commit 
 	
 #MDM requirement
     mkdir /firmware 0771 system system
@@ -53,9 +55,9 @@ on fs
     mkdir /tombstones/lpass 0775 system system
     mkdir /tombstones/wcnss 0775 system system
     mkdir /tombstones/dsps 0775 system system
-   # rmdir /tombstones/qcks
+    rmdir /tombstones/qcks
     mkdir /tombstones/qcks 0771 system system
-   # rmdir /tombstones/efs
+    rmdir /tombstones/efs
     mkdir /tombstones/efs 0771 system system
 
     chown system radio /dev/block/platform/dw_mmc/by-name
