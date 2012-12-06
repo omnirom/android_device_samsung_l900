@@ -100,5 +100,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
+#Misc
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/secomxregistry:/system/etc/secomxregistry \
+    $(LOCAL_PATH)/configs/security_profile.dat:/system/etc/security_profile.dat
 
 $(call inherit-product-if-exists, vendor/samsung/l900/l900-vendor.mk)
