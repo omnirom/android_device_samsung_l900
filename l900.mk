@@ -44,15 +44,20 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t0ltesprg
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/tinyucm.conf:system/etc/tinyucm.conf \
+    $(LOCAL_PATH)/configs/default_gain.conf:system/etc/default_gain.conf \
+    $(LOCAL_PATH)/configs/Volume.db:system/etc/Volume.db \
+    $(LOCAL_PATH)/configs/audio_effects.conf:/system/etc/audio_effects.conf
+#    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t0ltesprg \
 
 # Gps
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
 
 # Camera FW
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/configs/80cfw:system/etc/init.d/80cfw
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/80cfw:system/etc/init.d/80cfw
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
@@ -91,7 +96,7 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SamsungCDMAQualcommRIL \
-    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
+    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet_usb0 \
     ro.ril.hsxpa=1 \
     ro.ril.gprsclass=10
 

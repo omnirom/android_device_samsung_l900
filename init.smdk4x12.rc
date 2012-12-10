@@ -84,6 +84,23 @@ on post-fs-data
 
     # Allow QMUX daemon to assign port open wait time
     chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
+	
+    # To prevent out of order acknowledgements from making
+    # connection tracking to treat them as not belonging to
+    # the connection they belong to.
+    # Otherwise, a weird issue happens in which some long
+    # connections on high-throughput links get dropped when
+    # an ack packet comes out of order
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
+
+# SISO-ANDR_PERF :: START Changing scheduler to cfq and reseting cpu min freq to -1 after boot complete
+on property:sys.boot_completed=1
+    write /sys/block/mmcblk0/queue/scheduler cfq
+    write /sys/power/cpufreq_min_limit -1
+    write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
     
 # for AT distributor
     chown system radio /sys/module/cpuidle_exynos4/parameters/enable_mask
@@ -112,15 +129,6 @@ on post-fs-data
     mkdir /data/misc/radio 0775 radio system
     chmod 0775 /data/misc/radio
     mkdir /efs/imei 0775 radio system
-
-# icd
-    exec icd_check
-    chown system system /dev/icd
-    chmod 0644 /dev/icd
-    write /dev/icdr 0
-    chown system system /dev/icdr
-    chmod 0644 /dev/icdr
-    chown system system /dev/tzic
 
 # HDCP 2.x
     mkdir /data/system/hdcp2 0775 system system
@@ -463,9 +471,21 @@ on boot
     chown radio system /sys/class/sec/sec_epen/epen_checksum_result
     chown radio system /sys/class/sec/sec_epen/epen_reset
     
+# permission for HDMI audio path
+    chown media audio /sys/class/hdmi_audio/hdmi_audio/hdmi_audio_set_ext
+    
 # wakeup keys
     chown radio system /sys/class/sec/sec_key/wakeup_keys
     write /sys/class/sec/sec_key/wakeup_keys 116,172
+	
+# create filesystem if necessary
+service setup_fs /system/bin/setup_fs \
+            /dev/block/mmcblk0p3 \
+            /dev/block/mmcblk0p4
+    class core
+    user root
+    group root
+    oneshot
 
 # serial keyboard daemon
 service sec_keyboard /system/bin/sec_keyboard /dev/ttySAC2
@@ -586,3 +606,11 @@ service TvoutService_C /system/bin/bintvoutservice
 
 on property:ro.tvout.enable=false
     stop TvoutService_C
+	
+on property:ro.use_data_netmgrd=false
+#netmgr not supported on specific target
+    stop netmgrd
+	
+on property:ro.use_data_netmgrd=true
+    start netmgrd
+	
