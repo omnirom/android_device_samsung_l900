@@ -22,4 +22,11 @@
 
     <!-- Audio parameter for setting noise suppression-->
     <string name="in_call_noise_suppression_audioparameter">dualmic_enabled=false=true</string>
+    
+	    <!-- Sprint Message Wait Indicator Quirk
+         If true, message wait indicators are hidden by default on this device
+         unless the user enables it in Call Settings.  This quirk is necessary
+         for the "Phantom Voicemail" issue where notifications that are
+         impossible to dismiss on the Sprint network. -->
+    <bool name="sprint_mwi_quirk">true</bool>
 </resources>
