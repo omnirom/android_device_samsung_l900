@@ -21,6 +21,9 @@ on early-init
     
     symlink /efs /factory
 
+# Camera firmware
+    mkdir /data/cfw 0775 system system
+    
     mkdir /efs 0771 radio system
     mkdir /tombstones
 
@@ -139,6 +142,12 @@ on property:sys.boot_completed=1
 
 # Camera firmware
     mkdir /data/cfw 0775 system system
+    
+   cp /system/vendor/firmware/SlimISP_ZK.bin /data/cfw/SlimISP_ZK.bin
+   chown system media /data/cfw/*
+   chgrp media /data/cfw/*
+   chmod 0775 /data/cfw/*
+
 
 # Camera
     chown system radio /sys/class/camera/rear/rear_camfw
@@ -405,13 +414,13 @@ on property:sys.boot_completed=1
     chown system radio /sys/class/sensors/ssp_sensor/mag_poll_delay
 	
 # icd
-    exec icd_check
-    chown system system /dev/icd
-    chmod 0644 /dev/icd
-    write /dev/icdr 0
-    chown system system /dev/icdr
-    chmod 0644 /dev/icdr
-    chown system system /dev/tzic
+#    exec icd_check
+#    chown system system /dev/icd
+#    chmod 0644 /dev/icd
+#    write /dev/icdr 0
+#    chown system system /dev/icdr
+#    chmod 0644 /dev/icdr
+#    chown system system /dev/tzic
 
 # for datarouter
     chown system system /dev/dun
@@ -503,11 +512,11 @@ service sdcard /system/bin/sdcard /data/media 1023 1023
     class main
 
 # icd
-service icd /system/bin/icd
-    class main
-    user system
-    group system log
-    onrestart exec icd_check
+#service icd /system/bin/icd
+#    class main
+#    user system
+#    group system log
+#    onrestart exec icd_check
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
