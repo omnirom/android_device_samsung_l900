@@ -35,6 +35,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.smdk4x12.rc:root/init.smdk4x12.rc \
     $(LOCAL_PATH)/init.smdk4x12.usb.rc:root/init.smdk4x12.usb.rc \
     $(LOCAL_PATH)/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
+	$(LOCAL_PATH)/init.bt.rc:root/init.bt.rc \
     $(LOCAL_PATH)/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc
 	
 # Prebuilt Modules
@@ -49,7 +50,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/default_gain.conf:system/etc/default_gain.conf \
     $(LOCAL_PATH)/configs/Volume.db:system/etc/Volume.db \
     $(LOCAL_PATH)/configs/audio_effects.conf:/system/etc/audio_effects.conf
-#    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t0ltesprg \
 
 # Gps
 PRODUCT_COPY_FILES += \

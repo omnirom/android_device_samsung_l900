@@ -577,10 +577,16 @@ service macloader /system/bin/macloader
     class main
     oneshot
 	
+# AT Distributor for factory test
+service at_distributor /system/bin/at_distributor
+    class main
+    user root
+    group radio log
+	
 service secril-daemon /system/bin/sec-ril
     class main
     user root
-    group radio cache inet misc audio sdcard_rw diag log
+    group radio cache inet misc audio sdcard_rw qcom_diag log
 	
 service qmiproxy /system/bin/qmiproxy
     class main
