@@ -292,6 +292,21 @@ on property:sys.boot_completed=1
     chown system radio /sys/class/power_supply/battery/test_mode
     chown system radio /sys/class/power_supply/battery/wc_status
     chown system radio /sys/class/power_supply/battery/wpc_pin_state
+    
+# CTIA event
+   chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/call
+   chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/video
+   chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/music
+   chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/browser
+   chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/hotspot
+   chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/camera
+   chown system radio /sys/class/power_supply/battery/talk_wcdma
+   chown system radio /sys/class/power_supply/battery/talk_gsm
+   chown system radio /sys/class/power_supply/battery/call
+   chown system radio /sys/class/power_supply/battery/data_call
+   chown gps radio /sys/class/power_supply/battery/gps
+   chown system radio /sys/class/power_supply/battery/wifi
+   chown system radio /sys/class/power_supply/battery/lte
 
 # Thermistor node
     chown radio system /sys/devices/platform/sec-thermistor/temp_adc
@@ -413,15 +428,6 @@ on property:sys.boot_completed=1
     chown system radio /sys/class/sensors/ssp_sensor/ori_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/mag_poll_delay
 	
-# icd
-#    exec icd_check
-#    chown system system /dev/icd
-#    chmod 0644 /dev/icd
-#    write /dev/icdr 0
-#    chown system system /dev/icdr
-#    chmod 0644 /dev/icdr
-#    chown system system /dev/tzic
-
 # for datarouter
     chown system system /dev/dun
     chown system system /dev/ttyGS0
