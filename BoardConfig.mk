@@ -19,11 +19,6 @@
 
 -include device/samsung/smdk4412-common/BoardCommonConfig.mk
 
-
-# Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
-TARGET_KERNEL_CONFIG := cyanogenmod_l900_defconfig
-
 #Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/l900/bluetooth
 
