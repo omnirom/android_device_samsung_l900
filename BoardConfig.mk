@@ -19,9 +19,6 @@
 
 -include device/samsung/t0ltecdma/BoardCommonConfig.mk
 
-#Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/l900/bluetooth
-
 # assert
 TARGET_OTA_ASSERT_DEVICE := t0ltespr,l900,SPH-L900
 
