@@ -25,7 +25,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t0ltespr
+        $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t0ltesprg
 
 # Include common makefile
 $(call inherit-product, device/samsung/t0ltecdma/t0ltecdma.mk)
