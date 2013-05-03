@@ -20,7 +20,7 @@
 -include device/samsung/t0ltecdma/BoardCommonConfig.mk
 
 # assert
-TARGET_OTA_ASSERT_DEVICE := t0ltespr,l900,SPH-L900
+TARGET_OTA_ASSERT_DEVICE := t0ltespr,t0ltecdma,l900,SPH-L900
 
 # inherit from the proprietary version
 -include vendor/samsung/t0ltecdma/BoardConfigVendor.mk
