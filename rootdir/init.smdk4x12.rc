@@ -576,9 +576,3 @@ service gsiff_daemon /system/bin/gsiff_daemon
     class late_start
     user system
     group qcom_oncrpc gps
-
-# sensorhub
-service sensorhubservice /system/bin/sensorhubservice
-    class main
-    user system
-    group input
