@@ -10,4 +10,4 @@
 /carrier		ext4		/dev/block/mmcblk0p16
 
 /sdcard			datamedia       /dev/null
-/external_sd	        vfat		/dev/block/mmcblk1p1	fstype2=auto
+/external_sd  auto    /dev/block/mmcblk1p1  /dev/block/mmcblk1
