@@ -10,7 +10,6 @@ ro.lcd_min_brightness=20
 telephony.lteOnCdmaDevice=1
 ro.cdma.subscribe_on_ruim_ready=true
 ril.subscription.types=RUIM,NV
-#DEVICE_PROVISIONED=1
 persist.radio.no_wait_for_card=0
 ro.hdcp2.rx=tz
 
@@ -38,20 +37,17 @@ ro.cdma.home.operator.numeric=310120
 ro.cdma.home.operator.alpha=Sprint
 ro.telephony.default_network=8
 keyguard.no_require_sim=true
-ro.config.svlte1x=true
+ro.ril.svdo=true
 telephony.sms.pseudo_multipart=1
 
 # System property for SIM
 persist.radio.apm_sim_not_pwdn=0
 
 # System property for sys info indication
-#persist.radio.add_power_save=1
+persist.radio.add_power_save=1
 
 # System propverty snapshot disable
 persist.radio.snapshot_disabled=1
 
 # Default ECCList (Except USCC)
 ro.ril.ecclist=112,911,#911,*911
-
-# Support Global Mode (Global Mode project)
-#ro.config.multimode_cdma=1
