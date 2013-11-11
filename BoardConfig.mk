@@ -28,7 +28,7 @@ TARGET_RECOVERY_FSTAB := device/samsung/l900/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
 
 # assert
-TARGET_OTA_ASSERT_DEVICE := t0ltespr,t0ltecdma,l900,SPH-L900
+TARGET_OTA_ASSERT_DEVICE := t0ltecdma,t0ltespr,l900,SPH-L900
 
 # inherit from the proprietary version
 -include vendor/samsung/t0ltecdma/BoardConfigVendor.mk
