@@ -1,4 +1,6 @@
+#
 # Copyright (C) 2013 OmniROM Project
+# Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,22 +13,30 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-# Inherit CDMA configuration
+# Inherit Omni CDMA telephony parts
 $(call inherit-product, vendor/omni/config/cdma.mk)
 
-# Inherit from our custom product configuration
+# Inherit some common Omni configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-# Inherit device configuration
-$(call inherit-product, device/samsung/l900/full_l900.mk)
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit more device specific configurations
+$(call inherit-product, device/samsung/l900/device.mk)
 
 # Discard inherited values and use our own instead.
+PRODUCT_MODEL := SPH-L900
+PRODUCT_BRAND := samsung
 PRODUCT_NAME := omni_l900
 PRODUCT_DEVICE := l900
-PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := SPH-L900
 
-# Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=t0ltespr TARGET_DEVICE=t0ltespr BUILD_FINGERPRINT="samsung/t0ltespr/t0ltespr:4.3/JSS15J/L900VPUBMK4:user/release-keys" PRIVATE_BUILD_DESC="t0ltespr-user 4.3 JSS15J L900VPUBMK4 release-keys"
+# Set build fingerprint / ID / Product Name etc.
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=t0ltespr \
+    TARGET_DEVICE=t0ltespr \
+    PRIVATE_BUILD_DESC="t0ltespr-user 4.3 JSS15J L900VPUBMK4 release-keys" \
+    BUILD_FINGERPRINT="samsung/t0ltespr/t0ltespr:4.3/JSS15J/L900VPUBMK4:user/release-keys"
